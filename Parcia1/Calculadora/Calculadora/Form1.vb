@@ -1,41 +1,32 @@
-﻿Imports System.Data
+﻿Option Strict On
+Imports System.Data
 
 Public Class Form1
 
-    '=================================================
-    ' Configuración inicial
-    '=================================================
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        'Permite detectar teclas del teclado
         Me.KeyPreview = True
 
-        'Evita escritura manual
         TextBox1.ReadOnly = True
         TextBox2.ReadOnly = True
 
-        'Alinea texto a la derecha
         TextBox1.TextAlign = HorizontalAlignment.Right
         TextBox2.TextAlign = HorizontalAlignment.Right
+
+        TextBox2.Focus()
 
     End Sub
 
 
-    '=================================================
-    ' Agregar números y operadores
-    ' Evita operadores duplicados
-    '=================================================
     Private Sub Agregar(valor As String)
-
-        Dim operadores As String = "+-*/"
 
         If TextBox2.Text.Length > 0 Then
 
             Dim ultimo As String =
-            TextBox2.Text.Substring(TextBox2.Text.Length - 1)
+                TextBox2.Text.Substring(TextBox2.Text.Length - 1)
 
-            'Evita ++ -- **/
-            If operadores.Contains(ultimo) And operadores.Contains(valor) Then
+            If "+-*/".Contains(ultimo) And
+               "+-*/".Contains(valor) Then
                 Exit Sub
             End If
 
@@ -46,9 +37,37 @@ Public Class Form1
     End Sub
 
 
-    '=================================================
-    ' BOTONES NUMÉRICOS
-    '=================================================
+    Private Function ValidarCampoVacio(
+        campo As TextBox,
+        mensaje As String) As Boolean
+
+        If campo.Text.Trim() = "" Then
+
+            MessageBox.Show(mensaje)
+
+            campo.Focus()
+
+            Return False
+
+        End If
+
+        Return True
+
+    End Function
+
+
+    Private Function ParentesisValidos() As Boolean
+
+        Dim abrir As Integer =
+            TextBox2.Text.Count(Function(c) c = "("c)
+
+        Dim cerrar As Integer =
+            TextBox2.Text.Count(Function(c) c = ")"c)
+
+        Return abrir = cerrar
+
+    End Function
+
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Agregar("0")
@@ -91,18 +110,16 @@ Public Class Form1
     End Sub
 
 
-    '=================================================
-    ' Punto decimal
-    ' Evita varios puntos en un número
-    '=================================================
-
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
 
+        Dim operadores As Char() =
+            {"+"c, "-"c, "*"c, "/"c, "("c, ")"c}
+
         Dim partes() As String =
-        TextBox2.Text.Split("+"c, "-"c, "*"c, "/"c)
+            TextBox2.Text.Split(operadores)
 
         Dim ultimoNumero As String =
-        partes(partes.Length - 1)
+            partes(partes.Length - 1)
 
         If Not ultimoNumero.Contains(".") Then
             Agregar(".")
@@ -110,10 +127,6 @@ Public Class Form1
 
     End Sub
 
-
-    '=================================================
-    ' OPERADORES
-    '=================================================
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
         Agregar("+")
@@ -132,25 +145,178 @@ Public Class Form1
     End Sub
 
 
-    '=================================================
-    ' Porcentaje
-    '=================================================
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+
+        Try
+
+            If Not ValidarCampoVacio(
+                TextBox2,
+                "El campo Número 1 no puede estar vacío") Then
+
+                Exit Sub
+
+            End If
+
+            Dim expresion As String =
+                TextBox2.Text.Trim()
+
+            'Si inicia con operador (+,*,/)
+            If expresion.Length > 0 Then
+
+                If "+*/".Contains(expresion(0)) Then
+
+                    MessageBox.Show(
+                    "El campo Número 1 no puede estar vacío")
+
+                    TextBox2.Focus()
+
+                    Exit Sub
+
+                End If
+
+            End If
+
+            'Si termina con operador
+            If expresion.Length > 0 Then
+
+                Dim ultimo As Char =
+                expresion(expresion.Length - 1)
+
+                If "+-*/".Contains(ultimo) Then
+
+                    MessageBox.Show(
+                    "El campo Número 2 no puede estar vacío")
+
+                    TextBox2.Focus()
+
+                    Exit Sub
+
+                End If
+
+            End If
+
+
+            If Not ParentesisValidos() Then
+
+                MessageBox.Show(
+                "La expresión contiene paréntesis no balanceados")
+
+                Exit Sub
+
+            End If
+
+
+            If TextBox2.Text.Contains("/0") Then
+
+                Dim partes() As String =
+                    TextBox2.Text.Split("/"c)
+
+                If partes.Length > 1 Then
+
+                    Dim divisor As Decimal
+
+                    If Decimal.TryParse(
+            partes(1),
+            divisor) Then
+
+                        If divisor = 0D Then
+
+                            MessageBox.Show(
+                "No se puede dividir entre cero")
+
+                            TextBox1.Clear()
+
+                            Exit Sub
+
+                        End If
+
+                    End If
+
+                End If
+
+            End If
+
+
+            Dim resultado As Object =
+            New DataTable().Compute(
+            TextBox2.Text,
+            Nothing)
+
+            Dim valor As Decimal
+
+            If Not Decimal.TryParse(
+                resultado.ToString(),
+                valor) Then
+
+                MessageBox.Show(
+                "El valor ingresado no es un número válido")
+
+                TextBox2.Focus()
+
+                Exit Sub
+
+            End If
+
+
+            If valor Mod 1 = 0 Then
+
+                TextBox1.Text = valor.ToString("N0")
+                TextBox2.Text = valor.ToString("N0")
+
+            Else
+
+                TextBox1.Text = valor.ToString("N2")
+                TextBox2.Text = valor.ToString("N2")
+
+            End If
+
+
+        Catch ex As OverflowException
+
+            MessageBox.Show(
+            "El resultado está fuera del rango permitido")
+
+        Catch ex As Exception
+
+            MessageBox.Show(
+            "Operación inválida")
+
+        End Try
+
+    End Sub
+
 
     Private Sub Button20_Click(sender As Object, e As EventArgs) Handles Button20.Click
 
         Try
 
-            Dim valor As Double
+            Dim valor As Decimal
 
-            valor = Convert.ToDouble(TextBox2.Text)
+            If Not Decimal.TryParse(
+                TextBox2.Text,
+                valor) Then
 
-            valor = valor / 100
+                MessageBox.Show(
+                "El valor ingresado no es un número válido")
 
-            Dim resultadoFinal As String =
-            valor.ToString("0.######")
+                Exit Sub
 
-            TextBox1.Text = resultadoFinal
-            TextBox2.Text = resultadoFinal
+            End If
+
+
+            valor /= 100D
+
+            If valor Mod 1 = 0 Then
+
+                TextBox1.Text = valor.ToString("N0")
+                TextBox2.Text = valor.ToString("N0")
+
+            Else
+
+                TextBox1.Text = valor.ToString("N2")
+                TextBox2.Text = valor.ToString("N2")
+
+            End If
 
         Catch ex As Exception
 
@@ -161,43 +327,29 @@ Public Class Form1
     End Sub
 
 
-    '=================================================
-    ' Igual
-    ' Calcula y limita decimales mostrados
-    '=================================================
+    Private Sub Button17_Click(sender As Object, e As EventArgs) Handles Button17.Click
 
-    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        If TextBox2.Text.Length > 0 Then
 
-        Try
+            TextBox2.Text =
+            TextBox2.Text.Substring(
+            0,
+            TextBox2.Text.Length - 1)
 
-            Dim resultado As Object
-
-            resultado = New DataTable().Compute(TextBox2.Text, Nothing)
-
-            'Convierte a número decimal
-            Dim valor As Double = Convert.ToDouble(resultado)
-
-            'Muestra máximo 6 decimales y elimina ceros sobrantes
-            Dim resultadoFinal As String =
-            valor.ToString("0.######")
-
-            'Actualiza resultados
-            TextBox1.Text = resultadoFinal
-            TextBox2.Text = resultadoFinal
-
-        Catch ex As Exception
-
-            MessageBox.Show("Operación inválida")
-
-        End Try
+        End If
 
     End Sub
 
 
-    '=================================================
-    ' CE
-    ' Borra solo operación actual
-    '=================================================
+    Private Sub Button18_Click(sender As Object, e As EventArgs) Handles Button18.Click
+
+        TextBox1.Clear()
+        TextBox2.Clear()
+
+        TextBox2.Focus()
+
+    End Sub
+
 
     Private Sub Button19_Click(sender As Object, e As EventArgs) Handles Button19.Click
 
@@ -206,70 +358,168 @@ Public Class Form1
     End Sub
 
 
-    '=================================================
-    ' C
-    ' Borra toda la calculadora
-    '=================================================
+    Private Sub Button21_Click(sender As Object, e As EventArgs) Handles Button21.Click
 
-    Private Sub Button18_Click(sender As Object, e As EventArgs) Handles Button18.Click
+        Try
 
-        TextBox1.Clear()
-        TextBox2.Clear()
+            Dim numero As Decimal
+
+            If Not Decimal.TryParse(
+                TextBox2.Text,
+                numero) Then
+
+                MessageBox.Show(
+                "El valor ingresado no es un número válido")
+
+                TextBox2.Focus()
+
+                Exit Sub
+
+            End If
+
+
+            Dim resultado As Decimal =
+                numero * numero
+
+            If resultado Mod 1 = 0 Then
+
+                TextBox1.Text = resultado.ToString("N0")
+                TextBox2.Text = resultado.ToString("N0")
+
+            Else
+
+                TextBox1.Text = resultado.ToString("N2")
+                TextBox2.Text = resultado.ToString("N2")
+
+            End If
+
+        Catch ex As OverflowException
+
+            MessageBox.Show(
+            "El resultado está fuera del rango permitido")
+
+        End Try
 
     End Sub
 
 
-    '=================================================
-    ' <x
-    ' Borra un carácter
-    '=================================================
+    Private Sub Button22_Click(sender As Object, e As EventArgs) Handles Button22.Click
 
-    Private Sub Button17_Click(sender As Object, e As EventArgs) Handles Button17.Click
+        Try
 
-        If TextBox2.Text.Length > 0 Then
+            Dim numero As Decimal
 
-            TextBox2.Text =
-            TextBox2.Text.Substring(0,
-            TextBox2.Text.Length - 1)
+            If Not Decimal.TryParse(
+                TextBox2.Text,
+                numero) Then
+
+                MessageBox.Show(
+                "El valor ingresado no es un número válido")
+
+                TextBox2.Focus()
+
+                Exit Sub
+
+            End If
+
+
+            Dim resultado As Double =
+                Math.Sqrt(CDbl(numero))
+
+            If Double.IsNaN(resultado) Then
+
+                MessageBox.Show(
+                "La raíz cuadrada de un número negativo no es real")
+
+                Exit Sub
+
+            End If
+
+
+            Dim valor As Decimal =
+                CDec(resultado)
+
+            If valor Mod 1 = 0 Then
+
+                TextBox1.Text = valor.ToString("N0")
+                TextBox2.Text = valor.ToString("N0")
+
+            Else
+
+                TextBox1.Text = valor.ToString("N2")
+                TextBox2.Text = valor.ToString("N2")
+
+            End If
+        Catch ex As Exception
+
+            MessageBox.Show("Error")
+
+        End Try
+
+    End Sub
+
+
+    Private Sub Button23_Click(sender As Object, e As EventArgs) Handles Button23.Click
+
+        Agregar("(")
+
+    End Sub
+
+
+    Private Sub Button24_Click(sender As Object, e As EventArgs) Handles Button24.Click
+
+        Dim abrir As Integer =
+            TextBox2.Text.Count(
+            Function(c) c = "("c)
+
+        Dim cerrar As Integer =
+            TextBox2.Text.Count(
+            Function(c) c = ")"c)
+
+        If abrir > cerrar Then
+
+            Agregar(")")
 
         End If
 
     End Sub
 
 
-    '=================================================
-    ' Soporte para teclado
-    '=================================================
-
-    Private Sub Form1_KeyPress(sender As Object,
+    Private Sub Form1_KeyPress(
+    sender As Object,
     e As KeyPressEventArgs) Handles Me.KeyPress
 
         If Char.IsDigit(e.KeyChar) Then
-            Agregar(e.KeyChar)
+            Agregar(e.KeyChar.ToString())
         End If
 
         Select Case e.KeyChar
 
-            Case "+"
+            Case "+"c
                 Agregar("+")
 
-            Case "-"
+            Case "-"c
                 Agregar("-")
 
-            Case "*"
+            Case "*"c
                 Agregar("*")
 
-            Case "/"
+            Case "/"c
                 Agregar("/")
 
-            Case "."
+            Case "."c
                 Agregar(".")
 
-            Case Chr(13)
+            Case "("c
+                Agregar("(")
+
+            Case ")"c
+                Agregar(")")
+
+            Case ChrW(13)
                 Button6.PerformClick()
 
         End Select
 
     End Sub
-
 End Class

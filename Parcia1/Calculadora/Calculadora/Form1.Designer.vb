@@ -45,13 +45,18 @@ Partial Class Form1
         Button20 = New Button()
         TextBox1 = New TextBox()
         TextBox2 = New TextBox()
+        Button21 = New Button()
+        Button22 = New Button()
+        Button23 = New Button()
+        Button24 = New Button()
         SuspendLayout()
         ' 
         ' Label4
         ' 
         Label4.AutoSize = True
         Label4.Font = New Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
-        Label4.Location = New Point(85, 9)
+        Label4.ForeColor = Color.Transparent
+        Label4.Location = New Point(61, 24)
         Label4.Name = "Label4"
         Label4.Size = New Size(220, 30)
         Label4.TabIndex = 10
@@ -60,10 +65,11 @@ Partial Class Form1
         ' 
         ' Button1
         ' 
-        Button1.BackColor = SystemColors.WindowFrame
+        Button1.BackColor = Color.FromArgb(CByte(192), CByte(192), CByte(255))
         Button1.Font = New Font("Minecraft", 14.25F)
-        Button1.ForeColor = SystemColors.ControlLightLight
-        Button1.Location = New Point(118, 427)
+        Button1.ForeColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
+        Button1.ImageKey = "(ninguna)"
+        Button1.Location = New Point(97, 506)
         Button1.Name = "Button1"
         Button1.Size = New Size(79, 63)
         Button1.TabIndex = 11
@@ -72,10 +78,11 @@ Partial Class Form1
         ' 
         ' Button2
         ' 
-        Button2.BackColor = SystemColors.WindowFrame
+        Button2.BackColor = Color.FromArgb(CByte(192), CByte(192), CByte(255))
         Button2.Font = New Font("Minecraft", 14.25F)
-        Button2.ForeColor = SystemColors.ControlLightLight
-        Button2.Location = New Point(33, 358)
+        Button2.ForeColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
+        Button2.ImageKey = "(ninguna)"
+        Button2.Location = New Point(12, 436)
         Button2.Name = "Button2"
         Button2.Size = New Size(79, 63)
         Button2.TabIndex = 12
@@ -84,10 +91,11 @@ Partial Class Form1
         ' 
         ' Button3
         ' 
-        Button3.BackColor = SystemColors.WindowFrame
+        Button3.BackColor = Color.FromArgb(CByte(192), CByte(192), CByte(255))
         Button3.Font = New Font("Minecraft", 14.25F)
-        Button3.ForeColor = SystemColors.ControlLightLight
-        Button3.Location = New Point(118, 358)
+        Button3.ForeColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
+        Button3.ImageKey = "(ninguna)"
+        Button3.Location = New Point(97, 436)
         Button3.Name = "Button3"
         Button3.Size = New Size(79, 63)
         Button3.TabIndex = 13
@@ -96,10 +104,11 @@ Partial Class Form1
         ' 
         ' Button4
         ' 
-        Button4.BackColor = SystemColors.WindowFrame
+        Button4.BackColor = Color.FromArgb(CByte(192), CByte(192), CByte(255))
         Button4.Font = New Font("Minecraft", 14.25F)
-        Button4.ForeColor = SystemColors.ControlLightLight
-        Button4.Location = New Point(203, 358)
+        Button4.ForeColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
+        Button4.ImageKey = "(ninguna)"
+        Button4.Location = New Point(182, 436)
         Button4.Name = "Button4"
         Button4.Size = New Size(79, 63)
         Button4.TabIndex = 14
@@ -108,10 +117,11 @@ Partial Class Form1
         ' 
         ' Button5
         ' 
-        Button5.BackColor = SystemColors.WindowFrame
+        Button5.BackColor = Color.FromArgb(CByte(255), CByte(192), CByte(255))
         Button5.Font = New Font("Minecraft", 14.25F)
-        Button5.ForeColor = SystemColors.ControlLightLight
-        Button5.Location = New Point(33, 427)
+        Button5.ForeColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
+        Button5.ImageKey = "(ninguna)"
+        Button5.Location = New Point(12, 506)
         Button5.Name = "Button5"
         Button5.Size = New Size(79, 63)
         Button5.TabIndex = 15
@@ -120,10 +130,11 @@ Partial Class Form1
         ' 
         ' Button6
         ' 
-        Button6.BackColor = SystemColors.WindowFrame
+        Button6.BackColor = Color.FromArgb(CByte(255), CByte(128), CByte(255))
         Button6.Font = New Font("Minecraft", 14.25F)
-        Button6.ForeColor = SystemColors.ControlLightLight
-        Button6.Location = New Point(203, 427)
+        Button6.ForeColor = Color.White
+        Button6.ImageKey = "(ninguna)"
+        Button6.Location = New Point(182, 506)
         Button6.Name = "Button6"
         Button6.Size = New Size(79, 63)
         Button6.TabIndex = 16
@@ -132,10 +143,11 @@ Partial Class Form1
         ' 
         ' Button7
         ' 
-        Button7.BackColor = SystemColors.WindowFrame
+        Button7.BackColor = Color.SteelBlue
         Button7.Font = New Font("Minecraft", 14.25F)
-        Button7.ForeColor = SystemColors.ControlLightLight
-        Button7.Location = New Point(288, 427)
+        Button7.ForeColor = Color.White
+        Button7.ImageKey = "(ninguna)"
+        Button7.Location = New Point(266, 504)
         Button7.Name = "Button7"
         Button7.Size = New Size(79, 63)
         Button7.TabIndex = 17
@@ -144,10 +156,11 @@ Partial Class Form1
         ' 
         ' Button8
         ' 
-        Button8.BackColor = SystemColors.WindowFrame
+        Button8.BackColor = Color.FromArgb(CByte(192), CByte(192), CByte(255))
         Button8.Font = New Font("Minecraft", 14.25F)
-        Button8.ForeColor = SystemColors.ControlLightLight
-        Button8.Location = New Point(33, 289)
+        Button8.ForeColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
+        Button8.ImageKey = "(ninguna)"
+        Button8.Location = New Point(12, 368)
         Button8.Name = "Button8"
         Button8.Size = New Size(79, 63)
         Button8.TabIndex = 18
@@ -156,10 +169,11 @@ Partial Class Form1
         ' 
         ' Button9
         ' 
-        Button9.BackColor = SystemColors.WindowFrame
+        Button9.BackColor = Color.FromArgb(CByte(192), CByte(192), CByte(255))
         Button9.Font = New Font("Minecraft", 14.25F)
-        Button9.ForeColor = SystemColors.ControlLightLight
-        Button9.Location = New Point(118, 289)
+        Button9.ForeColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
+        Button9.ImageKey = "(ninguna)"
+        Button9.Location = New Point(97, 368)
         Button9.Name = "Button9"
         Button9.Size = New Size(79, 63)
         Button9.TabIndex = 19
@@ -168,10 +182,11 @@ Partial Class Form1
         ' 
         ' Button10
         ' 
-        Button10.BackColor = SystemColors.WindowFrame
+        Button10.BackColor = Color.FromArgb(CByte(192), CByte(192), CByte(255))
         Button10.Font = New Font("Minecraft", 14.25F)
-        Button10.ForeColor = SystemColors.ControlLightLight
-        Button10.Location = New Point(203, 289)
+        Button10.ForeColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
+        Button10.ImageKey = "(ninguna)"
+        Button10.Location = New Point(182, 368)
         Button10.Name = "Button10"
         Button10.Size = New Size(79, 63)
         Button10.TabIndex = 20
@@ -180,10 +195,11 @@ Partial Class Form1
         ' 
         ' Button11
         ' 
-        Button11.BackColor = SystemColors.WindowFrame
+        Button11.BackColor = Color.SteelBlue
         Button11.Font = New Font("Minecraft", 14.25F)
-        Button11.ForeColor = SystemColors.ControlLightLight
-        Button11.Location = New Point(288, 358)
+        Button11.ForeColor = Color.White
+        Button11.ImageKey = "(ninguna)"
+        Button11.Location = New Point(266, 436)
         Button11.Name = "Button11"
         Button11.Size = New Size(79, 63)
         Button11.TabIndex = 21
@@ -192,10 +208,11 @@ Partial Class Form1
         ' 
         ' Button12
         ' 
-        Button12.BackColor = SystemColors.WindowFrame
+        Button12.BackColor = Color.FromArgb(CByte(192), CByte(192), CByte(255))
         Button12.Font = New Font("Minecraft", 14.25F)
-        Button12.ForeColor = SystemColors.ControlLightLight
-        Button12.Location = New Point(33, 220)
+        Button12.ForeColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
+        Button12.ImageKey = "(ninguna)"
+        Button12.Location = New Point(12, 298)
         Button12.Name = "Button12"
         Button12.Size = New Size(79, 63)
         Button12.TabIndex = 22
@@ -204,10 +221,11 @@ Partial Class Form1
         ' 
         ' Button13
         ' 
-        Button13.BackColor = SystemColors.WindowFrame
+        Button13.BackColor = Color.FromArgb(CByte(192), CByte(192), CByte(255))
         Button13.Font = New Font("Minecraft", 14.25F)
-        Button13.ForeColor = SystemColors.ControlLightLight
-        Button13.Location = New Point(118, 220)
+        Button13.ForeColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
+        Button13.ImageKey = "(ninguna)"
+        Button13.Location = New Point(97, 298)
         Button13.Name = "Button13"
         Button13.Size = New Size(79, 63)
         Button13.TabIndex = 23
@@ -216,10 +234,11 @@ Partial Class Form1
         ' 
         ' Button14
         ' 
-        Button14.BackColor = SystemColors.WindowFrame
+        Button14.BackColor = Color.FromArgb(CByte(192), CByte(192), CByte(255))
         Button14.Font = New Font("Minecraft", 14.25F)
-        Button14.ForeColor = SystemColors.ControlLightLight
-        Button14.Location = New Point(203, 220)
+        Button14.ForeColor = Color.FromArgb(CByte(64), CByte(64), CByte(64))
+        Button14.ImageKey = "(ninguna)"
+        Button14.Location = New Point(182, 298)
         Button14.Name = "Button14"
         Button14.Size = New Size(79, 63)
         Button14.TabIndex = 24
@@ -228,10 +247,11 @@ Partial Class Form1
         ' 
         ' Button15
         ' 
-        Button15.BackColor = SystemColors.WindowFrame
+        Button15.BackColor = Color.SteelBlue
         Button15.Font = New Font("Minecraft", 14.25F)
-        Button15.ForeColor = SystemColors.ControlLightLight
-        Button15.Location = New Point(288, 289)
+        Button15.ForeColor = Color.White
+        Button15.ImageKey = "(ninguna)"
+        Button15.Location = New Point(266, 366)
         Button15.Name = "Button15"
         Button15.Size = New Size(79, 63)
         Button15.TabIndex = 25
@@ -240,10 +260,11 @@ Partial Class Form1
         ' 
         ' Button16
         ' 
-        Button16.BackColor = SystemColors.WindowFrame
+        Button16.BackColor = Color.SteelBlue
         Button16.Font = New Font("Minecraft", 14.25F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Button16.ForeColor = SystemColors.ControlLightLight
-        Button16.Location = New Point(288, 220)
+        Button16.ForeColor = Color.White
+        Button16.ImageKey = "(ninguna)"
+        Button16.Location = New Point(266, 298)
         Button16.Name = "Button16"
         Button16.Size = New Size(79, 63)
         Button16.TabIndex = 26
@@ -252,10 +273,11 @@ Partial Class Form1
         ' 
         ' Button17
         ' 
-        Button17.BackColor = SystemColors.WindowFrame
+        Button17.BackColor = Color.FromArgb(CByte(128), CByte(128), CByte(255))
         Button17.Font = New Font("Minecraft", 14.25F)
-        Button17.ForeColor = SystemColors.ControlLightLight
-        Button17.Location = New Point(203, 151)
+        Button17.ForeColor = Color.White
+        Button17.ImageKey = "(ninguna)"
+        Button17.Location = New Point(182, 160)
         Button17.Name = "Button17"
         Button17.Size = New Size(79, 63)
         Button17.TabIndex = 27
@@ -264,10 +286,11 @@ Partial Class Form1
         ' 
         ' Button18
         ' 
-        Button18.BackColor = SystemColors.WindowFrame
+        Button18.BackColor = Color.DodgerBlue
         Button18.Font = New Font("Minecraft", 14.25F)
-        Button18.ForeColor = SystemColors.ControlLightLight
-        Button18.Location = New Point(118, 151)
+        Button18.ForeColor = Color.White
+        Button18.ImageKey = "(ninguna)"
+        Button18.Location = New Point(12, 160)
         Button18.Name = "Button18"
         Button18.Size = New Size(79, 63)
         Button18.TabIndex = 28
@@ -276,10 +299,11 @@ Partial Class Form1
         ' 
         ' Button19
         ' 
-        Button19.BackColor = SystemColors.WindowFrame
+        Button19.BackColor = Color.FromArgb(CByte(128), CByte(128), CByte(255))
         Button19.Font = New Font("Minecraft", 14.25F)
-        Button19.ForeColor = SystemColors.ControlLightLight
-        Button19.Location = New Point(33, 151)
+        Button19.ForeColor = Color.White
+        Button19.ImageKey = "(ninguna)"
+        Button19.Location = New Point(97, 160)
         Button19.Name = "Button19"
         Button19.Size = New Size(79, 63)
         Button19.TabIndex = 29
@@ -288,10 +312,11 @@ Partial Class Form1
         ' 
         ' Button20
         ' 
-        Button20.BackColor = SystemColors.WindowFrame
+        Button20.BackColor = Color.SteelBlue
         Button20.Font = New Font("Minecraft", 14.25F)
-        Button20.ForeColor = SystemColors.ControlLightLight
-        Button20.Location = New Point(288, 151)
+        Button20.ForeColor = Color.White
+        Button20.ImageKey = "(ninguna)"
+        Button20.Location = New Point(266, 229)
         Button20.Name = "Button20"
         Button20.Size = New Size(79, 63)
         Button20.TabIndex = 30
@@ -300,8 +325,10 @@ Partial Class Form1
         ' 
         ' TextBox1
         ' 
+        TextBox1.BackColor = Color.White
+        TextBox1.BorderStyle = BorderStyle.FixedSingle
         TextBox1.Font = New Font("Minecraft", 15.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        TextBox1.Location = New Point(33, 98)
+        TextBox1.Location = New Point(11, 111)
         TextBox1.Name = "TextBox1"
         TextBox1.ReadOnly = True
         TextBox1.Size = New Size(334, 34)
@@ -311,20 +338,78 @@ Partial Class Form1
         ' 
         ' TextBox2
         ' 
+        TextBox2.BackColor = Color.Lavender
+        TextBox2.BorderStyle = BorderStyle.FixedSingle
         TextBox2.Font = New Font("Minecraft", 12F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         TextBox2.ForeColor = SystemColors.WindowFrame
-        TextBox2.Location = New Point(33, 58)
+        TextBox2.Location = New Point(11, 70)
         TextBox2.Name = "TextBox2"
         TextBox2.Size = New Size(334, 27)
         TextBox2.TabIndex = 32
         TextBox2.TextAlign = HorizontalAlignment.Right
         ' 
+        ' Button21
+        ' 
+        Button21.BackColor = Color.FromArgb(CByte(0), CByte(192), CByte(192))
+        Button21.Font = New Font("Minecraft", 14.25F)
+        Button21.ForeColor = Color.White
+        Button21.ImageKey = "(ninguna)"
+        Button21.Location = New Point(266, 160)
+        Button21.Name = "Button21"
+        Button21.Size = New Size(79, 63)
+        Button21.TabIndex = 33
+        Button21.Text = "x² "
+        Button21.UseVisualStyleBackColor = False
+        ' 
+        ' Button22
+        ' 
+        Button22.BackColor = Color.FromArgb(CByte(0), CByte(192), CByte(192))
+        Button22.Font = New Font("Minecraft", 14.25F)
+        Button22.ForeColor = Color.White
+        Button22.ImageKey = "(ninguna)"
+        Button22.Location = New Point(182, 229)
+        Button22.Name = "Button22"
+        Button22.Size = New Size(79, 63)
+        Button22.TabIndex = 34
+        Button22.Text = "√x"
+        Button22.UseVisualStyleBackColor = False
+        ' 
+        ' Button23
+        ' 
+        Button23.BackColor = Color.CadetBlue
+        Button23.Font = New Font("Minecraft", 14.25F)
+        Button23.ForeColor = Color.White
+        Button23.ImageKey = "(ninguna)"
+        Button23.Location = New Point(12, 229)
+        Button23.Name = "Button23"
+        Button23.Size = New Size(79, 63)
+        Button23.TabIndex = 35
+        Button23.Text = "("
+        Button23.UseVisualStyleBackColor = False
+        ' 
+        ' Button24
+        ' 
+        Button24.BackColor = Color.CadetBlue
+        Button24.Font = New Font("Minecraft", 14.25F)
+        Button24.ForeColor = Color.White
+        Button24.ImageKey = "(ninguna)"
+        Button24.Location = New Point(97, 229)
+        Button24.Name = "Button24"
+        Button24.Size = New Size(79, 63)
+        Button24.TabIndex = 36
+        Button24.Text = ")"
+        Button24.UseVisualStyleBackColor = False
+        ' 
         ' Form1
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        BackColor = SystemColors.ActiveCaption
-        ClientSize = New Size(402, 515)
+        BackColor = Color.Thistle
+        ClientSize = New Size(359, 580)
+        Controls.Add(Button24)
+        Controls.Add(Button23)
+        Controls.Add(Button22)
+        Controls.Add(Button21)
         Controls.Add(TextBox2)
         Controls.Add(TextBox1)
         Controls.Add(Button20)
@@ -376,5 +461,9 @@ Partial Class Form1
     Friend WithEvents Button20 As Button
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents Button21 As Button
+    Friend WithEvents Button22 As Button
+    Friend WithEvents Button23 As Button
+    Friend WithEvents Button24 As Button
 
 End Class
